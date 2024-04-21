@@ -4,10 +4,12 @@ import {
   Context,
 } from 'aws-lambda';
 
+import { v4 } from 'uuid';
+
 async function handler(event: APIGatewayProxyEvent, context: Context) {
   const response: APIGatewayProxyResult = {
     statusCode: 200,
-    body: JSON.stringify('Hello from Lambda!'),
+    body: JSON.stringify('Hello from Lambda! This is the id: ' + v4()),
   };
 
   console.log(event);
