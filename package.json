@@ -26,5 +26,8 @@
     "commitizen": {
       "path": "git-cz"
     }
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.556.0"
   }
 }
