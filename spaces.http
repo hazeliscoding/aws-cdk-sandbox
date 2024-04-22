@@ -1,7 +1,10 @@
-GET https://7ktmwp0ell.execute-api.us-east-1.amazonaws.com/prod/spaces
+@url = https://7ktmwp0ell.execute-api.us-east-1.amazonaws.com/prod/
+@token = eyJraWQiOiJTT3VWVUpXYVBNc0xoR2dTSWg1MjJ3UkhCaFFiU0Zxa1VIdStkakJcLzU5WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJkNDY4NjRmOC01MGExLTcwMGEtNDk4Mi1iODgzMmEzM2Q0YWYiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV95OHBsVFBqek0iLCJjb2duaXRvOnVzZXJuYW1lIjoidGVzdHVzZXIxMjMiLCJvcmlnaW5fanRpIjoiMzFkOGE5N2YtNGVmNy00YTUxLWIyYjAtYWNhNTVkYmU1YjQxIiwiYXVkIjoiMWQyMnRmYTN2MzBqaWhybXJvZjYzY29sZDMiLCJldmVudF9pZCI6IjEwYjQ1Y2M1LThjZmItNDE1Ny1iYmI3LWZhNjUxNDViYzE3MyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNzEzODIwNzczLCJleHAiOjE3MTM4MjQzNzMsImlhdCI6MTcxMzgyMDc3MywianRpIjoiMTAzYTE0ODktOWRjOC00OGY0LTkxZTgtYzgwNGY3MWQ2OTUxIiwiZW1haWwiOiJ0ZXN0dXNlcjEyM0BtYWlsLmNvbSJ9.FD6XWHul1t3E3eyUeNtY3aG7alTnKx81vt8YyrHo1vAMPYhLhsELul2KRFjjsUOQmXCoy2lKxp1S1-0KmkV-6gb8OpbcW7EFH2rGRkY59aCS47BedcMWomKCz87vqQmaKm_EklldFtC2KKVG1dSXTzs7G3R6CEkGhY0-xSILiewnI3LeUNf18AUErCg5ZOwOu0tf6WoJ4Bwo4LZLgFlramsmZMUiX_CnWJPjG9LavdLJO3w-hpbQs8-nGOAzPqPwNqKIFMr1N8EHtTs0jQYT6snID1UKFURegTV7dP_Y3jWlu0iVseV3BzLsbo7oBr-kY6k1f9rmOkzi-4kXT4UFLA
+GET {{url}}/spaces
+Authorization: {{token}}
 ###
 
-POST https://7ktmwp0ell.execute-api.us-east-1.amazonaws.com/prod/spaces
+POST {{url}}/spaces
 content-type: application/json
 
 {
@@ -10,10 +13,10 @@ content-type: application/json
 }
 ###
 
-GET https://7ktmwp0ell.execute-api.us-east-1.amazonaws.com/prod/spaces?id=3395ccb7-4ddb-4c1c-b9d6-e572bee8cfa1
+GET {{url}}/spaces?id=3395ccb7-4ddb-4c1c-b9d6-e572bee8cfa1
 ###
 
-PUT https://7ktmwp0ell.execute-api.us-east-1.amazonaws.com/prod/spaces?id=3395ccb7-4ddb-4c1c-b9d6-e572bee8cfa1
+PUT {{url}}/spaces?id=3395ccb7-4ddb-4c1c-b9d6-e572bee8cfa1
 content-type: application/json
 
 {
@@ -21,5 +24,5 @@ content-type: application/json
 }
 ###
 
-DELETE https://7ktmwp0ell.execute-api.us-east-1.amazonaws.com/prod/spaces?id=8dbced26-01d9-4a4c-bcff-47b10572b399
+DELETE {{url}}/spaces?id=8dbced26-01d9-4a4c-bcff-47b10572b399
 ###
