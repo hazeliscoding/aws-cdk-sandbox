@@ -18,11 +18,10 @@ async function handler(
   try {
     switch (event.httpMethod) {
       case 'GET':
-        const getResponse = getSpaces(event, dbbClient);
+        const getResponse = await getSpaces(event, dbbClient);
         return getResponse;
-        break;
       case 'POST':
-        const postResponse = postSpaces(event, dbbClient);
+        const postResponse = await postSpaces(event, dbbClient);
         return postResponse;
       default:
         break;
