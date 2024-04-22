@@ -5,17 +5,21 @@ POST https://7ktmwp0ell.execute-api.us-east-1.amazonaws.com/prod/spaces
 content-type: application/json
 
 {
-  "location": "Paris"
+  "location": "Dublin",
+  "name": "Dublin Office"
 }
 ###
 
-GET https://7ktmwp0ell.execute-api.us-east-1.amazonaws.com/prod/spaces?id=275081eb-7236-471f-83ef-ee8a056a588c
+GET https://7ktmwp0ell.execute-api.us-east-1.amazonaws.com/prod/spaces?id=3395ccb7-4ddb-4c1c-b9d6-e572bee8cfa1
 ###
 
-PUT https://7ktmwp0ell.execute-api.us-east-1.amazonaws.com/prod/spaces?id=275081eb-7236-471f-83ef-ee8a056a588c
+PUT https://7ktmwp0ell.execute-api.us-east-1.amazonaws.com/prod/spaces?id=3395ccb7-4ddb-4c1c-b9d6-e572bee8cfa1
 content-type: application/json
 
 {
-  "location": "Paris Texas"
+  "location": "Dublin 2"
 }
+###
+
+DELETE https://7ktmwp0ell.execute-api.us-east-1.amazonaws.com/prod/spaces?id=8dbced26-01d9-4a4c-bcff-47b10572b399
 ###
