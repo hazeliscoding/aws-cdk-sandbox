@@ -6,6 +6,8 @@ import {
 } from 'aws-lambda';
 import { postSpaces } from './PostSpaces';
 import { getSpaces } from './GetSpaces';
+import { updateSpace } from './UpdateSpace';
+import { deleteSpace } from './DeleteSpace';
 
 const dbbClient = new DynamoDBClient({});
 
@@ -19,10 +21,20 @@ async function handler(
     switch (event.httpMethod) {
       case 'GET':
         const getResponse = await getSpaces(event, dbbClient);
+        console.debug(getResponse);
         return getResponse;
       case 'POST':
         const postResponse = await postSpaces(event, dbbClient);
+        console.debug(postResponse);
         return postResponse;
+      case 'PUT':
+        const putResponse = await updateSpace(event, dbbClient);
+        console.debug(putResponse);
+        return putResponse;
+      case 'DELETE':
+        const deleteResponse = await deleteSpace(event, dbbClient);
+        console.debug(deleteResponse);
+        return deleteResponse;
       default:
         break;
     }
@@ -31,7 +43,7 @@ async function handler(
     return {
       statusCode: 500,
       body: JSON.stringify(error.message),
-    }
+    };
   }
 
   const response: APIGatewayProxyResult = {

@@ -7,7 +7,7 @@ handler(
   {
     httpMethod: 'GET',
     queryStringParameters: { id: '275081eb-7236-471f-83ef-ee8a056a588c' },
-    // body: JSON.stringify({ location: 'Stockholm' }),
+    // body: JSON.stringify({ location: 'Dublin' }),
   } as any,
   {} as any
 );

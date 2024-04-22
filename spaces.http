@@ -11,3 +11,11 @@ content-type: application/json
 
 GET https://7ktmwp0ell.execute-api.us-east-1.amazonaws.com/prod/spaces?id=275081eb-7236-471f-83ef-ee8a056a588c
 ###
+
+PUT https://7ktmwp0ell.execute-api.us-east-1.amazonaws.com/prod/spaces?id=275081eb-7236-471f-83ef-ee8a056a588c
+content-type: application/json
+
+{
+  "location": "Paris Texas"
+}
+###
