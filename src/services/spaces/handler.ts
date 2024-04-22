@@ -8,7 +8,7 @@ import { postSpaces } from './PostSpaces';
 import { getSpaces } from './GetSpaces';
 import { updateSpace } from './UpdateSpace';
 import { deleteSpace } from './DeleteSpace';
-import { MissingFieldError } from '../shared/DataValidator';
+import { JSONError, MissingFieldError } from '../shared/DataValidator';
 
 const dbbClient = new DynamoDBClient({});
 
@@ -43,12 +43,18 @@ async function handler(
     if (error instanceof MissingFieldError) {
       return {
         statusCode: 400,
-        body: JSON.stringify(error.message),
+        body: error.message,
+      };
+    }
+    if (error instanceof JSONError) {
+      return {
+        statusCode: 400,
+        body: error.message,
       };
     }
     return {
       statusCode: 500,
-      body: JSON.stringify(error.message),
+      body: error.message,
     };
   }
 
