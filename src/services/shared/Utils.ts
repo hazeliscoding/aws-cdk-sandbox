@@ -1,9 +1,18 @@
-import { APIGatewayProxyEvent } from 'aws-lambda';
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { JSONError } from './DataValidator';
 import { randomUUID } from 'crypto';
 
 export function createRandomId() {
   return randomUUID();
+}
+
+export function addCorsHeader(arg: APIGatewayProxyResult) {
+  arg.headers = {
+    ...arg.headers,
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': true,
+  };
+  return arg;
 }
 
 export function parseJSON(arg: string) {

@@ -9,33 +9,34 @@ import { getSpaces } from './GetSpaces';
 import { updateSpace } from './UpdateSpace';
 import { deleteSpace } from './DeleteSpace';
 import { JSONError, MissingFieldError } from '../shared/DataValidator';
+import { addCorsHeader } from '../shared/Utils';
 
-const dbbClient = new DynamoDBClient({});
+const ddbClient = new DynamoDBClient({});
 
 async function handler(
   event: APIGatewayProxyEvent,
   context: Context
 ): Promise<APIGatewayProxyResult> {
-  let message: string;
+  let response: APIGatewayProxyResult;
 
   try {
     switch (event.httpMethod) {
       case 'GET':
-        const getResponse = await getSpaces(event, dbbClient);
-        console.debug(getResponse);
-        return getResponse;
+        const getResponse = await getSpaces(event, ddbClient);
+        response = getResponse;
+        break;
       case 'POST':
-        const postResponse = await postSpaces(event, dbbClient);
-        console.debug(postResponse);
-        return postResponse;
+        const postResponse = await postSpaces(event, ddbClient);
+        response = postResponse;
+        break;
       case 'PUT':
-        const putResponse = await updateSpace(event, dbbClient);
-        console.debug(putResponse);
-        return putResponse;
+        const putResponse = await updateSpace(event, ddbClient);
+        response = putResponse;
+        break;
       case 'DELETE':
-        const deleteResponse = await deleteSpace(event, dbbClient);
-        console.debug(deleteResponse);
-        return deleteResponse;
+        const deleteResponse = await deleteSpace(event, ddbClient);
+        response = deleteResponse;
+        break;
       default:
         break;
     }
@@ -57,15 +58,7 @@ async function handler(
       body: error.message,
     };
   }
-
-  const response: APIGatewayProxyResult = {
-    statusCode: 200,
-    body: JSON.stringify(message),
-  };
-
-  console.log(event);
-
+  addCorsHeader(response);
   return response;
 }
-
 export { handler };
