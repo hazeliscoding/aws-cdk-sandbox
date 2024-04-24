@@ -20,9 +20,9 @@ export default function LoginComponent({
     event.preventDefault();
     if (userName && password) {
       const loginResponse = await authService.login(userName, password);
-      const userName2 = authService.getUserName();
-      if (userName2) {
-        setUserNameCb(userName2);
+      const isSignedIn = authService.isSignedIn();
+      if (isSignedIn) {
+        setUserNameCb(userName);
       }
 
       if (loginResponse) {
