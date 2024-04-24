@@ -8,7 +8,7 @@ import CreateSpace from './components/spaces/CreateSpace';
 import { DataService } from './services/DataService';
 
 const authService = new AuthService();
-const dataService = new DataService();
+const dataService = new DataService(authService);
 
 function App() {
   const [userName, setUserName] = useState<string | undefined>(undefined);

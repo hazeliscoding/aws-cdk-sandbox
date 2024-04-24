@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@aws-amplify/auth": "^6.0.29",
+    "@aws-sdk/client-cognito-identity": "^3.556.0",
+    "@aws-sdk/credential-providers": "^3.556.0",
     "aws-amplify": "^6.0.30",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
