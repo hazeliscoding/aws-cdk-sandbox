@@ -7,12 +7,11 @@ export function createRandomId() {
 }
 
 export function addCorsHeader(arg: APIGatewayProxyResult) {
-  arg.headers = {
-    ...arg.headers,
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Credentials': true,
-  };
-  return arg;
+  if (!arg.headers) {
+    arg.headers = {};
+  }
+  arg.headers['Access-Control-Allow-Origin'] = '*';
+  arg.headers['Access-Control-Allow-Methods'] = '*';
 }
 
 export function parseJSON(arg: string) {
