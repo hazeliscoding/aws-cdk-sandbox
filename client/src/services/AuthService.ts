@@ -21,6 +21,14 @@ export class AuthService {
   private user: SignInOutput | undefined;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private temporaryCredentials: any | undefined;
+  public jwtToken: string | undefined;
+
+  public isAuthorized() {
+    if (this.user) {
+      return true;
+    }
+    return false;
+  }
 
   public async login(username: string, password: string) {
     try {
@@ -31,6 +39,9 @@ export class AuthService {
           authFlowType: 'USER_PASSWORD_AUTH',
         },
       })) as SignInOutput;
+      const { idToken } = (await fetchAuthSession()).tokens ?? {};
+      console.log(idToken?.toString());
+      this.jwtToken = idToken?.toString() as string;
       return this.user;
     } catch (error) {
       console.error(error);
@@ -52,7 +63,7 @@ export class AuthService {
 
   public async generateTemporaryCredentials() {
     const { idToken } = (await fetchAuthSession()).tokens ?? {}; //CognitoUser is deprecated, but fetchAuthSession() will grab the current session details.
-    console.log(awsRegion);
+    console.log(idToken);
 
     const cognitoIdentityPool = `cognito-idp.${awsRegion}.amazonaws.com/us-east-1_y8plTPjzM`;
     const cognitoIdentity = new CognitoIdentityClient({
